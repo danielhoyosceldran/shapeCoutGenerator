@@ -8,9 +8,15 @@ La llibreria de gestió d'arxius que utlitzaré serà la ·fstream"
 */
 #include "coutGenerator.h"
 
-void coutGenerator::generarTop(ofstream &codiGenerat, char *top, int amplada)
+void coutGenerator::generarTop(ofstream &codiGenerat, char *top, int &amplada, int &numFigures)
 {
     codiGenerat << "cout << \"";
+    char *topAux = new char[numFigures * (amplada + 3) - 3];
+    memcpy(topAux, top, sizeof(top));
+    for (int i = 0; i < numFigures; i++)
+    {
+        topAux += '   ';
+    }
     codiGenerat.write(top, amplada);
     codiGenerat << "\" << endl;\n";
 }   
@@ -37,19 +43,17 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
     codiGenerat << "#include <iostream>\nusing namespace std;";
     codiGenerat << "int main(){";
     
-    generarTop(codiGenerat, top, amplada);
+    generarTop(codiGenerat, top, amplada, numFigures);
     for (int i = 0; i < alcada; i++)
     {
         codiGenerat << "cout << \"|";
         codiGenerat.write(side, amplada-2);
         codiGenerat << "|\" << endl;\n";
     }
-    generarTop(codiGenerat, top, amplada);
-
+    generarTop(codiGenerat, top, amplada, numFigures);
     codiGenerat << "}";
     
     return true;
-
 }
 
 void coutGenerator::imprimirFigura()
@@ -60,7 +64,9 @@ void coutGenerator::imprimirFigura()
     int compilation, execution;
     compilation = system("g++ -o cg codiGenerat.cpp");
     if (compilation == 0) execution = system("cg.exe");
+    else cout << " [e] -> Square compilation failed" << endl;
     if (execution == 0) system("del cg.exe");
+    else cout << " [e] -> Square execution failed" << endl;
 
     return;
 }

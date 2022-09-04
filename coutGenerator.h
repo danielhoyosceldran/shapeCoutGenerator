@@ -9,11 +9,8 @@ using namespace std;
 class coutGenerator
 {
 private:
-    /* data */
+    void generarTop(ofstream &, char *, int &, int &);
 public:
-    //coutGenerator(/* args */);
-    //~coutGenerator();
-    void generarTop(ofstream &, char *, int);
     bool generarFitxer(int, int, int);
     void imprimirFigura();
 };
