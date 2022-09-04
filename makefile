@@ -9,4 +9,4 @@ coutGenerator.o: coutGenerator.cpp coutGenerator.h
 	g++ -c coutGenerator.cpp
 
 clean:
-	del coutGenerator.exe *.o
+	del coutGenerator.exe *.o codiGenerat.cpp

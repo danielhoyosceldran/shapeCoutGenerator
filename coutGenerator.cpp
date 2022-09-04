@@ -26,7 +26,7 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
     memset (side, 32, amplada-2);
 
     ofstream codiGenerat;
-    codiGenerat.open("codiGenerat.txt", fstream::out);
+    codiGenerat.open("codiGenerat.cpp", fstream::out);
     if (!codiGenerat.is_open())
     {
         cout << " [e] -> No s'ha obert el fitxer" << endl;
@@ -34,6 +34,9 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
     }
     codiGenerat.flush(); //Buida el fitxer de tot el contingut que pugui tenir
 
+    codiGenerat << "#include <iostream>\nusing namespace std;";
+    codiGenerat << "int main(){";
+    
     generarTop(codiGenerat, top, amplada);
     for (int i = 0; i < alcada; i++)
     {
@@ -42,6 +45,8 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
         codiGenerat << "|\" << endl;\n";
     }
     generarTop(codiGenerat, top, amplada);
+
+    codiGenerat << "}";
     
     return true;
 
@@ -50,7 +55,7 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
 void coutGenerator::imprimirFigura()
 {
     ifstream figura;
-    figura.open("codiGenerat.txt");
+    figura.open("codiGenerat.cpp", fstream::in);
 
     /*
     Idea:
@@ -61,7 +66,7 @@ void coutGenerator::imprimirFigura()
 
     */
 
-    
+
 
     return;
 }
