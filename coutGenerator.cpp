@@ -42,14 +42,6 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
         codiGenerat << "|\" << endl;\n";
     }
     generarTop(codiGenerat, top, amplada);
-
-    cout << "----------" << endl;
-    cout << "|        |" << endl;
-    cout << "|        |" << endl;
-    cout << "|        |" << endl;
-    cout << "|        |" << endl;
-    cout << "----------" << endl;
-
-
+    
     return true;    
 }
