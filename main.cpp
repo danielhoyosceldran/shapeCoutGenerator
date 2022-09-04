@@ -33,5 +33,7 @@ int main()
     }
     cout << "[i] -> El fitxer s'ha generat correctment" << endl;
 
+    coutGen.imprimirFigura();
+
     return 0;
 }

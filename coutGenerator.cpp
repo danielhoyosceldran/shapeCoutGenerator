@@ -57,16 +57,10 @@ void coutGenerator::imprimirFigura()
     ifstream figura;
     figura.open("codiGenerat.cpp", fstream::in);
 
-    /*
-    Idea:
-    - Canviar l'extensió del fitxer a .cpp, ho faré manualment.
-    - Compilaré el fitxer i l'executaré durant l'execució del primer programa
-
-    Es pot fer això??
-
-    */
-
-
+    int compilation, execution;
+    compilation = system("g++ -o cg codiGenerat.cpp");
+    if (compilation == 0) execution = system("cg.exe");
+    if (execution == 0) system("del cg.exe");
 
     return;
 }
