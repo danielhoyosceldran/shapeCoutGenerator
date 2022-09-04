@@ -43,5 +43,25 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
     }
     generarTop(codiGenerat, top, amplada);
     
-    return true;    
+    return true;
+
+}
+
+void coutGenerator::imprimirFigura()
+{
+    ifstream figura;
+    figura.open("codiGenerat.txt");
+
+    /*
+    Idea:
+    - Canviar l'extensió del fitxer a .cpp, ho faré manualment.
+    - Compilaré el fitxer i l'executaré durant l'execució del primer programa
+
+    Es pot fer això??
+
+    */
+
+    
+
+    return;
 }

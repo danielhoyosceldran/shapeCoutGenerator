@@ -14,7 +14,7 @@ int main()
 
     cout << "Quantes figures vols per fila? ";
     int quantitat;
-    cin >> quantitat;
+    //cin >> quantitat; // Pendent d'actualització
     // Control d'error
     if (quantitat < 0)
     {

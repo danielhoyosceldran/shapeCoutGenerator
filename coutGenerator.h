@@ -15,4 +15,5 @@ public:
     //~coutGenerator();
     void generarTop(ofstream &, char *, int);
     bool generarFitxer(int, int, int);
+    void imprimirFigura();
 };
