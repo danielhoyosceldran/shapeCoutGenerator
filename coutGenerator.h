@@ -9,7 +9,7 @@ using namespace std;
 class coutGenerator
 {
 private:
-    void generarTop(ofstream &, char *, int &, int &);
+    void generarTop(ofstream &, string &, int &, int &);
 public:
     bool generarFitxer(int, int, int);
     void imprimirFigura();

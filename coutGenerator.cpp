@@ -8,28 +8,32 @@ La llibreria de gestió d'arxius que utlitzaré serà la ·fstream"
 */
 #include "coutGenerator.h"
 
-void coutGenerator::generarTop(ofstream &codiGenerat, char *top, int &amplada, int &numFigures)
+void coutGenerator::generarTop(ofstream &codiGenerat, string &top, int &amplada, int &numFigures)
 {
     codiGenerat << "cout << \"";
-    char *topAux = new char[numFigures * (amplada + 3) - 3];
-    memcpy(topAux, top, sizeof(top));
-    for (int i = 0; i < numFigures; i++)
+    string auxTop;
+    auxTop.assign(top);
+    for (int i = 1; i < numFigures; i++)
     {
-        topAux += '   ';
+        auxTop.append("   ");
+        auxTop.append(top);
     }
-    codiGenerat.write(top, amplada);
+    codiGenerat << auxTop;
     codiGenerat << "\" << endl;\n";
 }   
 
 bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
 {
-    //Definició de les cantonades
-    char *top, *side;
-    top = new char[amplada];
-    memset (top, '-', amplada);
+    if (numFigures < 1)
+    {
+        cout << " [e] -> " << numFigures << " no és una quantitat valida" << endl;
+        return false;
+    }
 
-    side = new char[amplada-2];
-    memset (side, 32, amplada-2);
+    //Definició dels costats
+    string top, side;
+    top.assign(amplada, '-');
+    side.assign(amplada - 2, ' ');
 
     ofstream codiGenerat;
     codiGenerat.open("codiGenerat.cpp", fstream::out);
@@ -41,13 +45,21 @@ bool coutGenerator::generarFitxer(int amplada, int alcada, int numFigures)
     codiGenerat.flush(); //Buida el fitxer de tot el contingut que pugui tenir
 
     codiGenerat << "#include <iostream>\nusing namespace std;";
-    codiGenerat << "int main(){";
+    codiGenerat << "int main(){\n";
     
     generarTop(codiGenerat, top, amplada, numFigures);
     for (int i = 0; i < alcada; i++)
     {
         codiGenerat << "cout << \"|";
-        codiGenerat.write(side, amplada-2);
+        string auxSide;
+        auxSide.assign(side);
+        for (int j = 1; j < numFigures; j++)
+        {
+            auxSide.append("|   |");
+            auxSide.append(side);
+            //auxSide.append("|");
+        }
+        codiGenerat << auxSide;
         codiGenerat << "|\" << endl;\n";
     }
     generarTop(codiGenerat, top, amplada, numFigures);

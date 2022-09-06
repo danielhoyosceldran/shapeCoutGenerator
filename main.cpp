@@ -14,19 +14,13 @@ int main()
 
     cout << "Quantes figures vols per fila? ";
     int quantitat;
-    //cin >> quantitat; // Pendent d'actualització
-    // Control d'error
-    if (quantitat < 0)
-    {
-        cout << " [e] -> " << quantitat << " no és una quantitat vàlida" << endl;
-        return -1;
-    }
+    cin >> quantitat; // Pendent d'actualització
     cout << "[i] -> Generant fitxer..." << endl;
 
 
     coutGenerator coutGen;
 
-    if (!coutGen.generarFitxer(amplada, alcada, 1)) // Treballant en el numero de figures que podem fer en paral·lel
+    if (!coutGen.generarFitxer(amplada, alcada, quantitat)) // Treballant en el numero de figures que podem fer en paral·lel
     {
         cout << " [e] -> No s'ha pogut generar el fitxer" << endl;
         return -1;
