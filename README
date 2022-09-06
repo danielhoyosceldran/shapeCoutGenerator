@@ -1,0 +1,8 @@
+Creator: Daniel Hoyos Celdran (https://github.com/danielhoyosceldran)
+Date: 06/09/2022
+
+Motivation: I made this because I need a program to generate squares of a specific size to make me easier draw squares on console.
+
+Important:
+ - Makefile's made for windows.
+ - The function named: imprimirFigura() uses mingw g++ compiler and it uses windows commands too.
